@@ -4,12 +4,14 @@ class CLI
     puts ""
     puts "WELCOME TO ROLLING STONE'S 100 GREATEST GUITARISTS"
     puts ""
+    puts "Enter 'exit' at any time to exit program"
+    puts ""
     sleep(1.5)
     print_list
   end
 
   def print_list
-    puts "Enter which section you would like to see or enter 'full' for full list:"
+    puts "Enter the section you would like to see or type 'full' for full list:"
     puts "100-81   80-61   60-41   40-21   20-1"
     puts ""
     input = gets.strip.downcase
@@ -32,6 +34,14 @@ class CLI
     when "full"
       puts ""
       puts "full list"
+    when "exit"
+      exit
+    else
+      puts ""
+      puts "INVALID ENTRY"
+      puts ""
+      print_list
+      puts ""
     end
   end
 
