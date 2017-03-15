@@ -1,11 +1,11 @@
 class Guitarist
-  attr_accessor :name, :blurb
+  attr_accessor :name, :blurb, :tracks
 
   @@ all = []
 
   def initialize(name)
     @name = name
-    @tracks = []
+    @@all << self
   end
 
 end

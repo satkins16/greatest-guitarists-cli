@@ -9,14 +9,19 @@ class Scraper
 
     all_guitarists = []
 
-    website.css(".collection-item h2").text.each do |guitarist|
-      Guitarist.new(guitarist)
-      
+    website.css(".collection-item").each do |block|
+      binding.pry
+      guitarist_name = block.css("h2").text
+      new_guitarist = Guitarist.new(guitarist_name)
+      guitarist_blurb = block.css("p").first.text
+      new_guitarist.blurb = guitarist_blurb
+      guitarist_tracks = block.css("p").second.text
+      new_guitarist.tracks = guitarist_tracks
+
+      all_guitarists << {name: guitarist_name, blurb: guitarist_blurb, tracks: guitarist_tracks}
     end
-
-
-
-    binding.pry
+    all_guitarists
   end
+
 
 end
