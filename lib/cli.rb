@@ -35,6 +35,8 @@ class CLI
       puts ""
       puts "full list"
     when "exit"
+      puts ""
+      puts "ROCK ON!!"
       exit
     else
       puts ""
