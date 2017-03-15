@@ -1,2 +1,2 @@
 require './lib/cli.rb'
-require './Gemfile'
+require './lib/guitarist.rb'
