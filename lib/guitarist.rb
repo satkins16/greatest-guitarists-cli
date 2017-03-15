@@ -1,5 +1,5 @@
 class Guitarist
-  attr_accessor :name, :blurb, :tracks
+  attr_accessor :name, :blurb, :tracks, :rank
 
   @@ all = []
 
