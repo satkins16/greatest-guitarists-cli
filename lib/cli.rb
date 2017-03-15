@@ -19,32 +19,60 @@ class CLI
     when "100-81"
       puts ""
       puts "that stuff"
+      puts ""
+      read_more
+      puts ""
     when "80-61"
       puts ""
       puts "that stuff"
+      puts ""
+      read_more
+      puts ""
     when "60-41"
       puts ""
       puts "that stuff"
+      puts ""
+      read_more
+      puts ""
     when "40-21"
       puts ""
       puts "that stuff"
+      puts ""
+      read_more
+      puts ""
     when "20-1"
       puts ""
       puts "that stuff"
+      puts ""
+      read_more
+      puts ""
     when "full"
       puts ""
       puts "full list"
+      puts ""
+      read_more
+      puts ""
     when "exit"
       puts ""
       puts "ROCK ON!!"
       exit
     else
       puts ""
-      puts "INVALID ENTRY"
+      puts "INVALID ENTRY - TRY AGAIN"
       puts ""
       print_list
       puts ""
     end
+  end
+
+  def read_more
+    puts "Enter the number of the guitarist you would like to read more about:"
+    puts ""
+    input = gets.strip.downcase
+    #printed full list will have numbers which equal array index +1 of full info list (an array of hashes)
+    #calls info array with input number as element
+    puts ""
+    print_list
   end
 
 
