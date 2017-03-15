@@ -9,6 +9,13 @@ class Scraper
 
     all_guitarists = []
 
+    website.css(".collection-item h2").text.each do |guitarist|
+      Guitarist.new(guitarist)
+      
+    end
+
+
+
     binding.pry
   end
 
