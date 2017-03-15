@@ -1,3 +1,4 @@
-#!/user/bin/ev ruby
+require_relative '../config/environment'
 
-puts "yo yo"
+
+CLI.new.call
