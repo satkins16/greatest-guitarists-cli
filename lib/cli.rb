@@ -4,6 +4,7 @@ class CLI
     puts ""
     puts "WELCOME TO ROLLING STONE'S 100 GREATEST GUITARISTS"
     puts ""
+    sleep(1.5)
     print_list
   end
 
@@ -11,7 +12,7 @@ class CLI
     puts "Enter which section you would like to see or enter 'full' for full list:"
     puts "100-81   80-61   60-41   40-21   20-1"
     puts ""
-    input = gets.strip
+    input = gets.strip.downcase
     case input
     when "100-81"
       puts ""
