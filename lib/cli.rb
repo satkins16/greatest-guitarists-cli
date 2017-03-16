@@ -1,3 +1,7 @@
+require_relative "../lib/scraper.rb"
+require_relative "../lib/guitarist.rb"
+require 'nokogiri'
+
 class CLI
 
   def call
@@ -48,7 +52,7 @@ class CLI
       puts ""
     when "full"
       puts ""
-      puts "full list"
+      Scraper.full_list
       puts ""
       read_more
       puts ""
