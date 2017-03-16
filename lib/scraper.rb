@@ -11,6 +11,7 @@ class Scraper
     website = Nokogiri::HTML("http://www.rollingstone.com/music/lists/100-greatest-guitarists-20111123")
 
     website.css(".collection-item").each do |block|
+      binding.pry
       guitarist_name = block.css("h2").text
       new_guitarist = Guitarist.new(guitarist_name)
       guitarist_rank = block.css("h2 span").text.to_i
@@ -28,7 +29,7 @@ class Scraper
   def self.full_list
     @@all_guitarists.each do |guitarist|
       guitarist.each do |key, value|
-        puts "#{:rank} #{:name}"
+        puts "#{key} #{value}"
       end
     end
   end
