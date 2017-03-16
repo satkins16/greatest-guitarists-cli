@@ -1,7 +1,7 @@
 class Guitarist
   attr_accessor :name, :blurb, :tracks, :rank
 
-  @@ all = []
+  @@all = []
 
   def initialize(name)
     @name = name

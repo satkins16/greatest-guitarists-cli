@@ -12,3 +12,5 @@ require "greatest_guitarists"
 
 require "irb"
 IRB.start(__FILE__)
+require "pry"
+Pry.start

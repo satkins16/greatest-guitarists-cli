@@ -3,14 +3,11 @@ require 'pry'
 require 'nokogiri'
 
 class Scraper
-
   def create_guitarists_hash
     website = Nokogiri::HTML("http://www.rollingstone.com/music/lists/100-greatest-guitarists-20111123")
 
     all_guitarists = []
-
     website.css(".collection-item").each do |block|
-      binding.pry
       guitarist_name = block.css("h2").text
       new_guitarist = Guitarist.new(guitarist_name)
       guitarist_rank = block.css("h2 span").text.to_i
