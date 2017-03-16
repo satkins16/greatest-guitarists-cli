@@ -22,5 +22,13 @@ class Scraper
     all_guitarists
   end
 
+  def full_list
+    all_guitarists.each do |key, value|
+      puts "#{:rank} #{:name}"
+    end
+  end
+
+
+
 
 end
