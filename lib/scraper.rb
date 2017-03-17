@@ -38,7 +38,9 @@ class Scraper
   def self.create_ranker
     website = Nokogiri::HTML(open("http://www.imdb.com/list/ls052192776/"))
     #website.css(".list_item .info b a").text
+    website.css(".list-item .info b a")
     binding.pry
+    end
   end
 
 
