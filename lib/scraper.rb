@@ -8,7 +8,7 @@ class Scraper
   @@all_guitarists = []
 
   def self.create_guitarists_hash
-    website = Nokogiri::HTML("http://www.rollingstone.com/music/lists/100-greatest-guitarists-20111123")
+    website = Nokogiri::HTML(open("http://www.rollingstone.com/music/lists/100-greatest-guitarists-20111123"))
 
     website.css(".collection-item").each do |block|
       binding.pry
@@ -36,5 +36,5 @@ class Scraper
 
 
 
-
+Scraper.create_guitarists_hash
 end
