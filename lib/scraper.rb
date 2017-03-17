@@ -38,8 +38,13 @@ class Scraper
   def self.create_ranker
     website = Nokogiri::HTML(open("http://www.imdb.com/list/ls052192776/"))
     #website.css(".list_item .info b a").text
-    website.css(".list-item .info b a")
-    binding.pry
+    @guitarists_array = []
+    website.css(".list-item .info b a").each do |block|
+      @guitarists_array << block.text
+    end
+    @guitarists_array.each do |guitarist|
+      binding.pry
+      puts "#{guitarist}"
     end
   end
 
