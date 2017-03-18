@@ -30,8 +30,8 @@ class CLI
       puts ""
     when "61-80"
       puts ""
-      Scraper.create_ranker.each_with_index do |i, g|
-        if i.to_i >= 62 && i.to_i <= 81
+      Scraper.create_ranker.each_with_index do |g, i|
+        if i.to_i >= 60 && i.to_i <= 79
           puts g
         end
       end
@@ -80,6 +80,8 @@ class CLI
     puts ""
     input = gets.strip.downcase
     if input == "exit"
+      puts ""
+      puts "ROCK ON!!"
       exit
     end
     #printed full list will have numbers which equal array index +1 of full info list (an array of hashes)
