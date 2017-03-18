@@ -55,10 +55,14 @@ class Scraper
   end
 
   def self.create_info
-    website = Nokogiri::HTML(open("http://www.imdb.com/list/ls052192776/"))
+    website = Nokogiri::HTML(open("http://www.rollingstone.com/music/lists/100-greatest-guitarists-20111123"))
     @info = website.css(".collection-item p").text
     @info
   end
 
-Scraper.create_guitarists_hash
+  def self.print_info
+    puts ""
+    puts Scraper.create_info
+  end
+
 end

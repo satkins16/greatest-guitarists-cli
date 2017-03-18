@@ -8,7 +8,7 @@ class CLI
     puts ""
     puts "WELCOME TO ROLLING STONE'S 100 GREATEST GUITARISTS"
     puts ""
-    puts "Enter 'exit' at any time to exit program"
+    puts "Enter 'info' for information about the list or 'exit' at any time to exit program"
     puts ""
     sleep(1.5)
     print_list
@@ -78,6 +78,10 @@ class CLI
       puts ""
       puts "ROCK ON!!"
       exit
+    when "info"
+      puts ""
+      Scraper.print_info
+      puts ""
     else
       puts ""
       puts "INVALID ENTRY - TRY AGAIN"
