@@ -8,6 +8,8 @@ class CLI
     puts ""
     puts "WELCOME TO ROLLING STONE'S 100 GREATEST GUITARISTS"
     puts ""
+    puts "                 ♪＼(^o^)／♪"
+    puts ""
     puts "Enter 'info' for information about the list or 'exit' at any time to exit program"
     puts ""
     sleep(1.5)
