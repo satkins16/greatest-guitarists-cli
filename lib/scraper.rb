@@ -62,7 +62,7 @@ class Scraper
 
   def self.print_info
     puts ""
-    puts Scraper.create_info
+    puts Scraper.create_info.gsub("e.THE VOTERS", "e.\n\nTHE VOTERS")
   end
 
 end

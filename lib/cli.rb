@@ -82,6 +82,9 @@ class CLI
       puts ""
       Scraper.print_info
       puts ""
+      sleep(1)
+      print_list
+      puts ""
     else
       puts ""
       puts "INVALID ENTRY - TRY AGAIN"
