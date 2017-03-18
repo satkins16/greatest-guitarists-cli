@@ -51,6 +51,11 @@ class Scraper
     @guitarists_ranker
   end
 
+  def self.print_ranker
+    puts ""
+    puts @guitarists_ranker
+  end
+
 
 
 Scraper.create_ranker

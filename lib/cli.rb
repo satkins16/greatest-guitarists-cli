@@ -52,7 +52,7 @@ class CLI
       puts ""
     when "full"
       puts ""
-      Scraper.full_list
+      Scraper.print_ranker
       puts ""
       read_more
       puts ""
@@ -73,6 +73,9 @@ class CLI
     puts "Enter the number of the guitarist you would like to read more about:"
     puts ""
     input = gets.strip.downcase
+    if input == "exit"
+      exit
+    end
     #printed full list will have numbers which equal array index +1 of full info list (an array of hashes)
     #calls info array with input number as element
     #add exit here as well
