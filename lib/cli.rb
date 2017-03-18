@@ -22,7 +22,9 @@ class CLI
     case input
     when "100-81"
       puts ""
-      puts "that stuff"
+      Scraper.create_ranker.drop(80).each do |guitarist|
+        puts guitarist
+      end
       puts ""
       read_more
       puts ""
