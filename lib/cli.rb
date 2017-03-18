@@ -16,11 +16,11 @@ class CLI
 
   def print_list
     puts "Enter the section you would like to see or type 'full' for full list:"
-    puts "100-81   80-61   60-41   40-21   20-1"
+    puts "1-20   21-40   41-60   61-80   81-100"
     puts ""
     input = gets.strip.downcase
     case input
-    when "100-81"
+    when "81-100"
       puts ""
       Scraper.create_ranker.drop(80).each do |guitarist|
         puts guitarist
@@ -28,25 +28,29 @@ class CLI
       puts ""
       read_more
       puts ""
-    when "80-61"
+    when "61-80"
+      puts ""
+      Scraper.create_ranker.each_with_index do |i, g|
+        if i.to_i >= 62 && i.to_i <= 81
+          puts g
+        end
+      end
+      puts ""
+      read_more
+      puts ""
+    when "41-60"
       puts ""
       puts "that stuff"
       puts ""
       read_more
       puts ""
-    when "60-41"
+    when "21-40"
       puts ""
       puts "that stuff"
       puts ""
       read_more
       puts ""
-    when "40-21"
-      puts ""
-      puts "that stuff"
-      puts ""
-      read_more
-      puts ""
-    when "20-1"
+    when "1-20"
       puts ""
       puts "that stuff"
       puts ""
