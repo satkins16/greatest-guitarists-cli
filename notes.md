@@ -1,1 +1,1 @@
-Update CLI with accurate methods and variables
+Add info section to beginning of cli (voters, year, description)

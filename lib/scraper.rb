@@ -5,12 +5,10 @@ require 'nokogiri'
 
 class Scraper
 
-  @@all_guitarists = []
-
   def self.create_guitarists_hash
     website = Nokogiri::HTML(open("http://www.rollingstone.com/music/lists/100-greatest-guitarists-20111123"))
 
-    binding.pry
+
 
     website.css("h2").text.each do |block|
       guitarist_name = block.css("h2").text
@@ -56,4 +54,11 @@ class Scraper
     puts Scraper.create_ranker
   end
 
+  def self.create_info
+    website = Nokogiri::HTML(open("http://www.imdb.com/list/ls052192776/"))
+    @info = website.css(".collection-item p").text
+    @info
+  end
+
+Scraper.create_guitarists_hash
 end

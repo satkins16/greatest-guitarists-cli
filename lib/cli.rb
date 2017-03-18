@@ -96,9 +96,6 @@ class CLI
       puts "ROCK ON!!"
       exit
     end
-    #printed full list will have numbers which equal array index +1 of full info list (an array of hashes)
-    #calls info array with input number as element
-    #add exit here as well
     puts ""
     print_list
   end
