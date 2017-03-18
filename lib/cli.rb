@@ -40,19 +40,31 @@ class CLI
       puts ""
     when "41-60"
       puts ""
-      puts "that stuff"
+      Scraper.create_ranker.each_with_index do |g, i|
+        if i.to_i >= 40 && i.to_i <= 59
+          puts g
+        end
+      end
       puts ""
       read_more
       puts ""
     when "21-40"
       puts ""
-      puts "that stuff"
+      Scraper.create_ranker.each_with_index do |g, i|
+        if i.to_i >= 20 && i.to_i <= 39
+          puts g
+        end
+      end
       puts ""
       read_more
       puts ""
     when "1-20"
       puts ""
-      puts "that stuff"
+      Scraper.create_ranker.each_with_index do |g, i|
+        if i.to_i <= 19
+          puts g
+        end
+      end
       puts ""
       read_more
       puts ""
