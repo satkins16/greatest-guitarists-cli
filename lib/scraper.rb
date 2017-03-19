@@ -22,7 +22,9 @@ class Scraper
   end
 
   def self.assign_attributes
+
     website = Nokogiri::HTML(open("http://www.rollingstone.com/music/lists/100-greatest-guitarists-20111123"))
+    
   end
 
   def self.print_ranker
@@ -42,5 +44,5 @@ class Scraper
   end
 
   Scraper.create_ranker
-
+  Scraper.assign_attributes
 end
