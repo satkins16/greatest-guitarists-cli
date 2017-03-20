@@ -8,6 +8,10 @@ class Guitarist
 
   @@all = []
 
+  def self.all
+    @@all
+  end
+
   def initialize(name = nil)
     @name = name
     @@all << self
@@ -51,11 +55,6 @@ class Guitarist
   end
   rescue OpenURI::HTTPError
 
-  def self.all
-    @@all
-  end
-
   Guitarist.create_guitarists
   Guitarist.assign_attributes
-
 end

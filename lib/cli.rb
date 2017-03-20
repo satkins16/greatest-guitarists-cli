@@ -105,17 +105,21 @@ class CLI
       puts ""
       puts "ROCK ON!!"
       exit
-    else
-      binding.pry
+    elsif input.to_i == (1..100)
       Guitarist.all.each do |guitarist|
         puts ""
         if input.to_i == guitarist.rank
           puts guitarist.blurb
+          print_list
         end
       end
+    else
+      puts ""
+      puts "INVALID ENTRY - TRY AGAIN"
+      puts ""
+      print_list
+      puts ""
     end
   end
-
-CLI.new.read_more
 
 end
