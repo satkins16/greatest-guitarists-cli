@@ -27,7 +27,6 @@ class Guitarist
   def self.assign_attributes
     self.all.each do |guitarist|
       new_url = guitarist.name.downcase.gsub(" ", "-")
-      @info = []
       @counter = 0
       if new_url == "jimi-hendrix"
         website = Nokogiri::HTML(open("http://www.rollingstone.com/music/lists/100-greatest-guitarists-20111123/#{new_url}-20120705"))
@@ -50,7 +49,7 @@ class Guitarist
       end
     end
   end
-
+  rescue OpenURI::HTTPError
 
   def self.all
     @@all
@@ -58,5 +57,5 @@ class Guitarist
 
   Guitarist.create_guitarists
   Guitarist.assign_attributes
-  binding.pry
+
 end
