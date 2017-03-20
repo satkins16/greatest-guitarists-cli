@@ -1,6 +1,7 @@
 require_relative "../lib/scraper.rb"
 require_relative "../lib/guitarist.rb"
 require 'nokogiri'
+require 'pry'
 
 class CLI
 
@@ -104,10 +105,17 @@ class CLI
       puts ""
       puts "ROCK ON!!"
       exit
+    else
+      binding.pry
+      Guitarist.all.each do |guitarist|
+        puts ""
+        if input.to_i == guitarist.rank
+          puts guitarist.blurb
+        end
+      end
     end
-    puts ""
-    print_list
   end
 
+CLI.new.read_more
 
 end
