@@ -27,14 +27,30 @@ class Guitarist
   def self.assign_attributes
     self.all.each do |guitarist|
       new_url = guitarist.name.downcase.gsub(" ", "-")
+      @info = []
+      @counter = 0
       if new_url == "jimi-hendrix"
         website = Nokogiri::HTML(open("http://www.rollingstone.com/music/lists/100-greatest-guitarists-20111123/#{new_url}-20120705"))
+        website.css("p").each do |block|
+          if block.text.start_with?("100 Greatest Guitarists", "Find out who", "Key Tracks") == false
+            guitarist.blurb = block.text
+          elsif block.text.start_with?("Key Tracks")
+            guitarist.tracks = block.text.gsub("Key Tracks:", "")
+          end
+        end
       else
         website = Nokogiri::HTML(open("http://www.rollingstone.com/music/lists/100-greatest-guitarists-20111123/#{new_url}-20111122"))
-      binding.pry
+        website.css("p").each do |block|
+          if block.text.start_with?("100 Greatest Guitarists", "Find out who", "Key Tracks") == false
+            guitarist.blurb = block.text
+          elsif block.text.start_with?("Key Tracks")
+            guitarist.tracks = block.text.gsub("Key Tracks:", "")
+          end
+        end
       end
     end
   end
+
 
   def self.all
     @@all
@@ -42,4 +58,5 @@ class Guitarist
 
   Guitarist.create_guitarists
   Guitarist.assign_attributes
+  binding.pry
 end
