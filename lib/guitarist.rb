@@ -42,18 +42,21 @@ class Guitarist
           end
         end
       else
-        website = Nokogiri::HTML(open("http://www.rollingstone.com/music/lists/100-greatest-guitarists-20111123/#{new_url}-20111122"))
-        website.css("p").each do |block|
-          if block.text.start_with?("100 Greatest Guitarists", "Find out who", "Key Tracks") == false
-            guitarist.blurb = block.text
-          elsif block.text.start_with?("Key Tracks")
-            guitarist.tracks = block.text.gsub("Key Tracks:", "")
+        begin
+          @website = Nokogiri::HTML(open("http://www.rollingstone.com/music/lists/100-greatest-guitarists-20111123/#{new_url}-20111122"))
+        rescue
+          @website.css("p").each do |block|
+            if block.text.start_with?("100 Greatest Guitarists", "Find out who", "Key Tracks") == false
+              guitarist.blurb = block.text
+            elsif block.text.start_with?("Key Tracks")
+              guitarist.tracks = block.text.gsub("Key Tracks:", "")
+            end
           end
         end
       end
     end
   end
-  rescue OpenURI::HTTPError
+
 
   Guitarist.create_guitarists
   Guitarist.assign_attributes
