@@ -29,17 +29,13 @@ class Guitarist
   end
 
   def self.assign_attributes
-    self.all.each do |guitarist|
+    self.all.drop(1).each do |guitarist|
       new_url = guitarist.name.downcase.gsub(" ", "-")
-      if new_url == "jimi-hendrix"
-        @website = Nokogiri::HTML(open("http://www.rollingstone.com/music/lists/100-greatest-guitarists-20111123/#{new_url}-20120705"))
+      begin
+        @website = Nokogiri::HTML(open("http://www.rollingstone.com/music/lists/100-greatest-guitarists-20111123/#{new_url}-20111122"))
+      rescue
         guitarist.blurb = @website.css(".collection-item").text
-      else
-        begin
-          @website = Nokogiri::HTML(open("http://www.rollingstone.com/music/lists/100-greatest-guitarists-20111123/#{new_url}-20111122"))
-        rescue
-          guitarist.blurb = @website.css(".collection-item").text
-        end
+        binding.pry
       end
     end
   end
