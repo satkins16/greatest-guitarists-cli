@@ -46,7 +46,7 @@ class Guitarist
           @website = Nokogiri::HTML(open("http://www.rollingstone.com/music/lists/100-greatest-guitarists-20111123/#{new_url}-20111122"))
         rescue
           @website.css("p").each do |block|
-            if block.text.start_with?("100 Greatest Guitarists", "Find out who", "Key Tracks") == false
+            if block.text.start_with?("100 Greatest Guitarists", "Find out who", "Key Tracks", "Related", "What is this", "Sign up", "Please enable", "How we use") == false && block.text == ""
               guitarist.blurb = block.text
             elsif block.text.start_with?("Key Tracks")
               guitarist.tracks = block.text.gsub("Key Tracks:", "")
@@ -60,4 +60,5 @@ class Guitarist
 
   Guitarist.create_guitarists
   Guitarist.assign_attributes
+  binding.pry
 end
