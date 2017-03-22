@@ -111,7 +111,7 @@ class CLI
       Guitarist.all.each do |guitarist|
         puts ""
         if input.to_i == guitarist.rank
-          puts guitarist.blurb
+          puts guitarist.blurb.text
           print_list
         end
       end
