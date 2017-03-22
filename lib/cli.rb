@@ -106,8 +106,6 @@ class CLI
       puts "ROCK ON!!"
       exit
     elsif input.to_i >= 1 && input.to_i <= 100
-      Guitarist.create_guitarists
-      Guitarist.assign_attributes
       Guitarist.all.each do |guitarist|
         puts ""
         if input.to_i == guitarist.rank
