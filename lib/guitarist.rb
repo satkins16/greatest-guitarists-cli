@@ -44,8 +44,15 @@ class Guitarist
     end
   end
 
+  def self.shave_blurb
+    self.all.each do |guitarist|
+    guitarist.blurb = guitarist.blurb.to_s.gsub(/^Related(.*?) (.*)$/, "").strip
+    end
+  end
+
 
   Guitarist.create_guitarists
   Guitarist.assign_attributes
-  
+  Guitarist.shave_blurb
+binding.pry
 end
