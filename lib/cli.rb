@@ -110,6 +110,7 @@ class CLI
         puts ""
         if input.to_i == guitarist.rank
           puts guitarist.blurb
+          puts ""
           print_list
         end
       end
