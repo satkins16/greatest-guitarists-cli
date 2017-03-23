@@ -107,8 +107,8 @@ class CLI
       exit
     elsif input.to_i >= 1 && input.to_i <= 100
       Guitarist.all.each do |guitarist|
-        puts ""
         if input.to_i == guitarist.rank
+          puts ""
           puts guitarist.blurb
           puts ""
           print_list
