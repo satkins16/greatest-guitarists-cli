@@ -10,7 +10,13 @@ class Scraper
     #website.css(".list_item .info b a").text
     @guitarists_name_array = []
     website.css(".list_item .info b a").each do |block|
-      @guitarists_name_array << block.text
+      if block.text == "John Farley"
+        @guitarists_name_array << block.text.gsub("Farley", "Fahey")
+      elsif block.text == "Dane A. Davis"
+        @guitarists_name_array << block.text.gsub("Dane A. Davis", "Dave Davies")
+      else
+        @guitarists_name_array << block.text
+      end
     end
     @guitarists_ranker = []
     counter = 1

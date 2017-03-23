@@ -4,7 +4,7 @@ require 'pry'
 require 'nokogiri'
 
 class Guitarist
-  attr_accessor :name, :blurb, :tracks, :rank
+  attr_accessor :name, :blurb, :rank
 
   @@all = []
 
@@ -37,6 +37,9 @@ class Guitarist
       elsif new_url == "hubert-sumlin"
         @website = Nokogiri::HTML(open("http://www.rollingstone.com/music/lists/100-greatest-guitarists-20111123/#{new_url}-20111205"))
         guitarist.blurb = @website.css(".collection-item").text
+      elsif new_url == "eddie-hazel"
+        @website = Nokogiri::HTML(open("http://www.rollingstone.com/music/lists/100-greatest-guitarists-20111123/#{new_url}-20111202"))
+        guitarist.blurb = @website.css(".collection-item").text
       elsif new_url == "dimebag-darrell"
         begin
         @website = Nokogiri::HTML(open("http://www.rollingstone.com/music/lists/100-greatest-guitarists-20111123/#{new_url}-20111215"))
@@ -55,7 +58,7 @@ class Guitarist
 
   def self.shave_blurb
     self.all.each do |guitarist|
-    guitarist.blurb = guitarist.blurb.to_s.gsub(/^Related(.*?) (.*)$/, "").strip
+    guitarist.blurb = guitarist.blurb.to_s.gsub(/^Related(.*?) (.*)$/, "").gsub("Key Tracks", "\nKey Tracks").strip
     end
   end
 
