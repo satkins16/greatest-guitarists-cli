@@ -8,13 +8,13 @@ class CLI
 
   def call
     puts ""
-    puts "-------------- WELCOME TO ROLLING STONE'S 100 GREATEST GUITARISTS --------------".yellow
+    puts "-------------- WELCOME TO ROLLING STONE'S 100 GREATEST GUITARISTS --------------".yellow.bold
     puts ""
     puts ""
-    puts "                                   ♪＼(^o^)／♪".yellow
+    puts "                                   ♪＼(^o^)／♪".yellow.bold
     puts ""
     puts ""
-    puts "--------------------------------------------------------------------------------".yellow
+    puts "--------------------------------------------------------------------------------".yellow.bold
     puts ""
     sleep(1.5)
     puts "Enter 'info' for information about the list or 'exit' at any time to exit program"
@@ -31,7 +31,7 @@ class CLI
     when "81-100"
       puts ""
       Scraper.create_ranker.drop(80).each do |guitarist|
-        puts guitarist.yellow
+        puts guitarist.yellow.bold
       end
       puts ""
       read_more
@@ -40,7 +40,7 @@ class CLI
       puts ""
       Scraper.create_ranker.each_with_index do |g, i|
         if i.to_i >= 60 && i.to_i <= 79
-          puts g.yellow
+          puts g.yellow.bold
         end
       end
       puts ""
@@ -50,7 +50,7 @@ class CLI
       puts ""
       Scraper.create_ranker.each_with_index do |g, i|
         if i.to_i >= 40 && i.to_i <= 59
-          puts g.yellow
+          puts g.yellow.bold
         end
       end
       puts ""
@@ -60,7 +60,7 @@ class CLI
       puts ""
       Scraper.create_ranker.each_with_index do |g, i|
         if i.to_i >= 20 && i.to_i <= 39
-          puts g.yellow
+          puts g.yellow.bold
         end
       end
       puts ""
@@ -70,7 +70,7 @@ class CLI
       puts ""
       Scraper.create_ranker.each_with_index do |g, i|
         if i.to_i <= 19
-          puts g.yellow
+          puts g.yellow.bold
         end
       end
       puts ""
@@ -79,19 +79,19 @@ class CLI
     when "full"
       puts ""
       Scraper.create_ranker.each_with_index do |g, i|
-        puts g.yellow
+        puts g.yellow.bold
       end
       puts ""
       read_more
       puts ""
     when "exit"
       puts ""
-      puts "ROCK ON!!".red
+      puts "ROCK ON!!".red.bold
       puts ""
       exit
     when "info"
       puts ""
-      Scraper.print_info.yello
+      Scraper.print_info
       puts ""
       puts ""
       sleep(1)
@@ -99,7 +99,7 @@ class CLI
       puts ""
     else
       puts ""
-      puts "INVALID ENTRY - TRY AGAIN".red
+      puts "INVALID ENTRY - TRY AGAIN".red.bold
       puts ""
       print_list
       puts ""
@@ -112,7 +112,7 @@ class CLI
     input = gets.strip.downcase
     if input == "exit"
       puts ""
-      puts "ROCK ON!!".red
+      puts "ROCK ON!!".red.bold
       puts ""
       exit
     elsif input.to_i >= 1 && input.to_i <= 100
@@ -120,9 +120,9 @@ class CLI
         if input.to_i == guitarist.rank
           puts ""
           puts ""
-          puts "#{guitarist.rank}. #{guitarist.name}".yellow
+          puts "#{guitarist.rank}. #{guitarist.name}".yellow.bold
           puts ""
-          puts guitarist.blurb.yellow
+          puts guitarist.blurb.yellow.bold
           puts ""
           puts ""
           print_list
@@ -130,9 +130,9 @@ class CLI
       end
     else
       puts ""
-      puts "INVALID ENTRY - TRY AGAIN".red
+      puts "INVALID ENTRY - TRY AGAIN".red.bold
       puts ""
-      print_list
+      read_more
       puts ""
     end
   end

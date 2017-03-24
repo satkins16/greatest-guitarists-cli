@@ -41,7 +41,7 @@ class Scraper
 
   def self.print_info
     puts ""
-    puts Scraper.create_info.gsub("e.THE VOTERS", "e.\n\nTHE VOTERS")
+    puts Scraper.create_info.gsub("e.THE VOTERS", "e.\n\nTHE VOTERS").gsub(")CONTRIB", ")\n\nCONTRIB").yellow.bold
   end
 
   Scraper.create_ranker
