@@ -120,9 +120,9 @@ class CLI
         if input.to_i == guitarist.rank
           puts ""
           puts ""
-          puts "#{guitarist.rank}. #{guitarist.name}".yellow.bold
+          puts "#{guitarist.rank}. #{guitarist.name}".green.bold
           puts ""
-          puts guitarist.blurb.yellow.bold
+          puts guitarist.blurb.green.bold
           puts ""
           puts ""
           print_list

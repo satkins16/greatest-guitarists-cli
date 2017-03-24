@@ -59,7 +59,7 @@ class Guitarist
 
   def self.shave_blurb
     self.all.each do |guitarist|
-    guitarist.blurb = guitarist.blurb.to_s.gsub(/^Related(.*?) (.*)$/, "").gsub("Key Tracks", "\nKey Tracks").strip
+    guitarist.blurb = guitarist.blurb.to_s.gsub(/^Related(.*?) (.*)$/, "").gsub(/\r\n?|\n/, "").gsub("Key Tracks", "\n\nKey Tracks").strip
     end
   end
 
