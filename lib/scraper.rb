@@ -2,6 +2,7 @@ require_relative '../config/environment'
 require 'open-uri'
 require 'pry'
 require 'nokogiri'
+require 'colorize'
 
 class Scraper
 
