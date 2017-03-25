@@ -1,9 +1,7 @@
 <<<<<<< HEAD
-# GreatestGuitarists
+# Rolling Stone's 100 Greatest Guitarists
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/greatest_guitarists`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This Ruby Gem provides a CLI to view the 100 greatest guitarists of all-time according to Rolling Stone Magazine. All information provided is from Rolling Stone's official website (www.rollingstone.com).
 
 ## Installation
 
@@ -23,7 +21,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Type the below and follow the on-screen prompts:
+
+    $ ruby bin/greatest_guitarists
 
 ## Development
 
@@ -34,6 +34,10 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/'satkins16-43771'/greatest_guitarists.
+
+## License
+
+The gem is available as open source under the terms of the MIT License.
 
 =======
 # greatest-guitarists-cli-app
