@@ -19,6 +19,7 @@ class CLI
     sleep(1.5)
     puts "Enter 'info' for information about the list or 'exit' at any time to exit program"
     puts ""
+    Scraper.scrape_names
     print_list
   end
 
@@ -30,8 +31,8 @@ class CLI
     case input
     when "81-100"
       puts ""
-      Scraper.create_ranker.drop(80).each do |guitarist|
-        puts guitarist.yellow.bold
+      Guitarist.all.drop(80).each.with_index(81) do |guitarist, i|
+        puts "#{i.to_s}. #{guitarist.name}".yellow.bold
       end
       puts ""
       read_more
@@ -116,17 +117,17 @@ class CLI
       puts ""
       exit
     elsif input.to_i >= 1 && input.to_i <= 100
-      Guitarist.all.each do |guitarist|
-        if input.to_i == guitarist.rank
-          puts ""
-          puts ""
-          puts "#{guitarist.rank}. #{guitarist.name}".green.bold
-          puts ""
-          puts guitarist.blurb.green.bold
-          puts ""
-          puts ""
-          print_list
-        end
+      guitarist = Guitarist.find(input.to_i - 1)
+      Guitarist.assign_attributes(guitarist)
+      Guitarist.shave_blurb(guitarist)
+        puts ""
+        puts ""
+        puts "#{guitarist.rank}. #{guitarist.name}".green.bold
+        puts ""
+        puts guitarist.blurb.green.bold
+        puts ""
+        puts ""
+        print_list
       end
     else
       puts ""
@@ -135,6 +136,5 @@ class CLI
       read_more
       puts ""
     end
-  end
 
 end

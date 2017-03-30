@@ -6,26 +6,21 @@ require 'colorize'
 
 class Scraper
 
-  def self.create_ranker
+  def self.scrape_names
     website = Nokogiri::HTML(open("http://www.imdb.com/list/ls052192776/"))
     #website.css(".list_item .info b a").text
-    @guitarists_name_array = []
+    #@guitarists_name_array = []
+    count = 1
     website.css(".list_item .info b a").each do |block|
       if block.text == "John Farley"
-        @guitarists_name_array << block.text.gsub("Farley", "Fahey")
+        guitarist = Guitarist.new(block.text.gsub("Farley", "Fahey"), count)
       elsif block.text == "Dane A. Davis"
-        @guitarists_name_array << block.text.gsub("Dane A. Davis", "Dave Davies")
+        guitarist = Guitarist.new(block.text.gsub("Dane A. Davis", "Dave Davies"), count)
       else
-        @guitarists_name_array << block.text
+        guitarist = Guitarist.new(block.text, count)
       end
+      count += 1
     end
-    @guitarists_ranker = []
-    counter = 1
-    @guitarists_name_array.collect do |guitarist|
-      @guitarists_ranker << "#{counter}. #{guitarist}"
-      counter += 1
-    end
-    @guitarists_ranker
   end
 
   def self.print_ranker
@@ -44,5 +39,5 @@ class Scraper
     puts Scraper.create_info.gsub("e.THE VOTERS", "e.\n\nTHE VOTERS").gsub(")CONTRIB", ")\n\nCONTRIB").yellow.bold
   end
 
-  Scraper.create_ranker
+
 end
