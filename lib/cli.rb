@@ -7,6 +7,7 @@ require 'colorize'
 class CLI
 
   def call
+    Scraper.scrape_names
     puts ""
     puts "-------------- WELCOME TO ROLLING STONE'S 100 GREATEST GUITARISTS --------------".yellow.bold
     puts ""
@@ -19,7 +20,6 @@ class CLI
     sleep(1.5)
     puts "Enter 'info' for information about the list or 'exit' at any time to exit program"
     puts ""
-    Scraper.scrape_names
     print_list
   end
 
@@ -31,17 +31,17 @@ class CLI
     case input
     when "81-100"
       puts ""
-      Guitarist.all.drop(80).each.with_index(81) do |guitarist, i|
-        puts "#{i.to_s}. #{guitarist.name}".yellow.bold
+      Guitarist.all.drop(80).each do |g|
+        puts "#{g.rank}. #{g.name}".yellow.bold
       end
       puts ""
       read_more
       puts ""
     when "61-80"
       puts ""
-      Scraper.create_ranker.each_with_index do |g, i|
-        if i.to_i >= 60 && i.to_i <= 79
-          puts g.yellow.bold
+      Guitarist.all.each_with_index do |g, i|
+        if g.rank >= 61 && g.rank <= 80
+          puts "#{g.rank}. #{g.name}".yellow.bold
         end
       end
       puts ""
@@ -49,9 +49,9 @@ class CLI
       puts ""
     when "41-60"
       puts ""
-      Scraper.create_ranker.each_with_index do |g, i|
-        if i.to_i >= 40 && i.to_i <= 59
-          puts g.yellow.bold
+      Guitarist.all.each_with_index do |g, i|
+        if g.rank >= 41 && g.rank <= 60
+          puts "#{g.rank}. #{g.name}".yellow.bold
         end
       end
       puts ""
@@ -59,9 +59,9 @@ class CLI
       puts ""
     when "21-40"
       puts ""
-      Scraper.create_ranker.each_with_index do |g, i|
-        if i.to_i >= 20 && i.to_i <= 39
-          puts g.yellow.bold
+      Guitarist.all.each_with_index do |g, i|
+        if g.rank >= 21 && g.rank <= 40
+          puts "#{g.rank}. #{g.name}".yellow.bold
         end
       end
       puts ""
@@ -69,9 +69,9 @@ class CLI
       puts ""
     when "1-20"
       puts ""
-      Scraper.create_ranker.each_with_index do |g, i|
-        if i.to_i <= 19
-          puts g.yellow.bold
+      Guitarist.all.each do |g|
+        if g.rank >= 1 && g.rank <= 20
+          puts "#{g.rank}. #{g.name}".yellow.bold
         end
       end
       puts ""
@@ -79,9 +79,7 @@ class CLI
       puts ""
     when "full"
       puts ""
-      Scraper.create_ranker.each_with_index do |g, i|
-        puts g.yellow.bold
-      end
+      Guitarist.print_ranker
       puts ""
       read_more
       puts ""
@@ -128,7 +126,6 @@ class CLI
         puts ""
         puts ""
         print_list
-      end
     else
       puts ""
       puts "INVALID ENTRY - TRY AGAIN".red.bold
@@ -136,5 +133,6 @@ class CLI
       read_more
       puts ""
     end
+  end
 
 end

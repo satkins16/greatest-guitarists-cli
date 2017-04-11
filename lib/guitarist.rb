@@ -53,4 +53,10 @@ class Guitarist
     @@all[index]
   end
 
+  def self.print_ranker
+    Guitarist.all.each do |guitarist|
+      puts "#{guitarist.rank}. #{guitarist.name}".yellow.bold
+    end
+  end
+
 end

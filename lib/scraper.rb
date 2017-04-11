@@ -10,22 +10,15 @@ class Scraper
     website = Nokogiri::HTML(open("http://www.imdb.com/list/ls052192776/"))
     #website.css(".list_item .info b a").text
     #@guitarists_name_array = []
-    count = 1
-    website.css(".list_item .info b a").each do |block|
+    website.css(".list_item .info b a").each_with_index do |block, i|
       if block.text == "John Farley"
-        guitarist = Guitarist.new(block.text.gsub("Farley", "Fahey"), count)
+        guitarist = Guitarist.new(block.text.gsub("Farley", "Fahey"), i + 1)
       elsif block.text == "Dane A. Davis"
-        guitarist = Guitarist.new(block.text.gsub("Dane A. Davis", "Dave Davies"), count)
+        guitarist = Guitarist.new(block.text.gsub("Dane A. Davis", "Dave Davies"), i + 1)
       else
-        guitarist = Guitarist.new(block.text, count)
+        guitarist = Guitarist.new(block.text, i + 1)
       end
-      count += 1
     end
-  end
-
-  def self.print_ranker
-    puts ""
-    puts Scraper.create_ranker
   end
 
   def self.create_info
